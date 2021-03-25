@@ -2,26 +2,24 @@ const basicApiLink = "http://localhost:8080/"
 
 export const api = {
 
-    getAllInstructors: function(){
-        fetch(basicApiLink + "/instructor/all", {
+    getInstructorById: function(id){
+        return fetch(basicApiLink + "instructor/" + id, {
             method: "GET",
             headers: {
                 'Content-Type': 'application/json'
             }
         })
             .then(response => response.json())
-            .then(result => console.log(result))
     },
 
-    getInstructorById: function(id){
-        fetch(basicApiLink + "instructor/" + id, {
+    getCourseById: function(id){
+        return fetch(basicApiLink + "classes/" + id, {
             method: "GET",
             headers: {
-                'Content-Type': 'application/json'
+                "Content-Type": 'application/json'
             }
         })
             .then(response => response.json())
-            .then(result => console.log(result))
     }
 
 }

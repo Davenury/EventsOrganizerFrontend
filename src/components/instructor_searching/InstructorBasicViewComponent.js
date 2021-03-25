@@ -1,6 +1,7 @@
 import {InstructorInputComponent} from "./InstructorInputComponent";
-import {useState} from "react";
+
 import {InstructorCalendarView} from "./InstructorCallendarView";
+import {useState} from "react";
 
 
 export function InstructorBasicViewComponent(){
