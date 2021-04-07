@@ -10,8 +10,10 @@ const localizer = momentLocalizer(moment);
 export function CalendarView(props){
 
     const [openModal, setOpenModal] = useState(false);
+    const [selectedCourse, setSelectedCourse] = useState(null);
 
     const eventSelected = (event, e) => {
+        setSelectedCourse(event.course)
         handleOpenModal()
     }
 
@@ -26,11 +28,16 @@ export function CalendarView(props){
     return(
         <div style={{height: "80vh", width: "90%", marginLeft: "auto", marginRight: "auto"}}>
             <Calendar
-            localizer={localizer}
-            events={props.events}
-            onSelectEvent={eventSelected}
+                localizer={localizer}
+                events={props.events}
+                onSelectEvent={eventSelected}
             />
-            <CourseModal open={openModal} handleOpen={handleOpenModal} handleClose={handleCloseModal} />
+            <CourseModal 
+                open={openModal}
+                handleOpen={handleOpenModal}
+                handleClose={handleCloseModal}
+                course={selectedCourse}
+            />
         </div>
     )
 }
