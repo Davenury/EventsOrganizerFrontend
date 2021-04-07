@@ -12,6 +12,16 @@ export const api = {
             .then(response => response.json())
     },
 
+    getInstructorByName: function(name, surname){
+        return fetch(basicApiLink + "instructor/where?firstName=" + name + "&lastName=" + surname,{
+            method: "GET",
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(response => response.json())
+    },
+
     getCourseById: function(id){
         return fetch(basicApiLink + "classes/" + id, {
             method: "GET",
@@ -20,6 +30,13 @@ export const api = {
             }
         })
             .then(response => response.json())
+    },
+
+    getInstructorsCourses: function(people){
+        const promises = people.map( (person, idx) => {
+            return fetch(basicApiLink + "classes/" + (idx + 1))
+        })
+        return Promise.all(promises)
     }
 
 }

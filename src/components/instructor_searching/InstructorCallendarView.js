@@ -1,26 +1,33 @@
 import PropTypes from "prop-types";
 import { api } from "../../services/apis/EventsApi";
 import {useEffect, useState} from 'react';
-import {CircularProgress} from "@material-ui/core";
+import { CircularProgress, Box } from "@material-ui/core";
+import { Calendar } from '../calendar/Calendar';
+import swal from 'sweetalert';
 
 export function InstructorCalendarView(props) {
 
     //domyślnie - pobranie wszystkich zajęć z danego instruktora
 
     const [person, setPerson] = useState(null);
+    const [fetching, setFetching] = useState(false);
 
     useEffect(() => {
+        setFetching(true)
         getAllThings()
     }, [])
 
     const getAllThings = () => {
-        api.getInstructorById(1)
+        api.getInstructorByName(props.name, props.surname)
             .then(response => setPerson(response))
+            .catch(error =>{
+                setFetching(false)
+                swal("Error", "We've encounter an error while trying to get your classes! " + error, "error")
+            })
     }
 
     const preparePerson = () => {
-        return Object.entries(person)
-            .map(array => <p key={array[0]}> {array[0]}, {array[1]}</p>)
+        return <Calendar person={person} />
     }
 
     return (
@@ -30,8 +37,20 @@ export function InstructorCalendarView(props) {
                     preparePerson()
                     :
                     <div>
-                        <p>We're searching for your courses...</p>
-                        <CircularProgress />
+                        {
+                            fetching ? 
+                            <div>
+                                We're getting your classes ready!
+                                <Box m={2}>
+                                    <CircularProgress />
+                                </Box>
+                            </div>
+                            :
+                            <div>
+                                We didn't succeed in getting your courses!
+                            </div>
+                            //domyślnie 404?
+                        }            
                     </div>
             }
         </div>

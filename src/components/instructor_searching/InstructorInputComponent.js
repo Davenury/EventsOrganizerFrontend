@@ -1,5 +1,6 @@
 import {useState} from "react";
-import {Box, Button, TextField} from "@material-ui/core";
+import { TextField } from '../../atoms/TextField';
+import { Button } from '../../atoms/Button';
 import PropTypes from "prop-types";
 
 
@@ -22,24 +23,9 @@ export function InstructorInputComponent(props){
 
     return(
         <div>
-            <Box m={1} p={1}>
-                <TextField
-                    id="standard-basic"
-                    label="Name"
-                    value={name}
-                    onChange={handleNameChange}/>
-            </Box>
-            <Box m={1} p={1} mb={2}>
-                <TextField
-                    id="standard-basic"
-                    label="Surname"
-                    value={surname}
-                    onChange={handleSurnameChange}/>
-            </Box>
-            <Button
-                variant="contained"
-                color="primary"
-                onClick={handleSubmit}> Search! </Button>
+            <TextField label="Name" value={name} onChange={handleNameChange} />
+            <TextField mb={2} label="Surname" value={surname} onChange={handleSurnameChange} />
+            <Button text="Search!" onClick={handleSubmit}></Button>
         </div>
     )
 }
