@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { CalendarView } from './CalendarView';
 import { api } from '../../services/apis/EventsApi';
+import { mapCoursesToEvents } from '../../services/utils/coursesMapper';
 
 export function Calendar(props){
     
@@ -13,19 +14,6 @@ export function Calendar(props){
             .then(courses => mapCoursesToEvents(courses))
             .then(events => setEvents(events))
     }, [])
-
-    const mapCoursesToEvents = courses => {
-        return courses.map(course => createClasses(course))
-    }
-
-    const createClasses = course => {
-        return {
-            title: course.classesType,
-            start: new Date(course.startTime),
-            end: new Date(course.endTime),
-            course: course
-        }
-    }
 
     return <CalendarView events={events} />
 }
