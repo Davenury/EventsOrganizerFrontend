@@ -1,5 +1,5 @@
 # Events Organizer - Frontend Part
-![React](https://img.shields.io/badge/Library-React-informational) ![JS](https://img.shields.io/badge/Language-JavaScript-yellow)
+![React](https://img.shields.io/badge/Library-React-informational) ![JS](https://img.shields.io/badge/Language-JavaScript-yellow) ![workflow badge](https://github.com/Davenury/EventsOrganizerFrontend/actions/workflows/node.js.yml/badge.svg)
 
 ---
 
