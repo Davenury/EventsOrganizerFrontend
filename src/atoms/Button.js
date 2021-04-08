@@ -5,12 +5,13 @@ export function Button(props){
     return <MB
             variant={props.variant}
             color={props.color}
-            onClick={props.onClick}> {props.text} </MB>
+            onClick={props.onClick}>{props.text}</MB>
 }
 
 Button.defaultProps = {
     variant: "contained",
-    color: "primary"
+    color: "primary",
+    text: "Oops, something should be here!"
 }
 
 Button.propTypes = {
