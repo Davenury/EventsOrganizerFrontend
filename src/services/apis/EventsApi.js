@@ -1,4 +1,4 @@
-const basicApiLink = "http://localhost:8080/"
+const basicApiLink = "https://eventsorganizer.herokuapp.com/"
 
 export const api = {
 
@@ -34,7 +34,12 @@ export const api = {
 
     getInstructorsCourses: function(people){
         const promises = people.map( (person, idx) => {
-            return fetch(basicApiLink + "classes/" + (idx + 1))
+            return fetch(basicApiLink + "classes/" + (idx + 1), {
+                method: "GET",
+                headers: {
+                    "Content-Type": 'application/json'
+                }
+            })
         })
         return Promise.all(promises)
     }
