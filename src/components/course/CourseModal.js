@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Fade from '@material-ui/core/Fade';
 import Modal from '@material-ui/core/Modal';
 import { CourseDetails } from './CourseDetails';
+import { Button } from '../../atoms/Button';
+import { green } from '@material-ui/core/colors';
+import { generate } from '../../services/utils/courseLinkGenerator';
+import { CourseLinkAlert } from './CourseLinkAlert';
+import { Box } from "@material-ui/core";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -24,6 +29,11 @@ const useStyles = makeStyles((theme) => ({
 export function CourseModal(props){
 
     const classes = useStyles();
+    const [show, setShow] = useState(false);
+
+    const showAlert = () => {
+        setShow(!show)
+    }
 
     return (
         <div>
@@ -36,6 +46,14 @@ export function CourseModal(props){
                     <div className={classes.paper}>
                         <CourseDetails
                             course={props.course}
+                        />
+                        <Box m={2}>
+                            {show ? <CourseLinkAlert id={props.course.id}/> : <div></div>}
+                        </Box>
+                        <Button 
+                            color={green}
+                            text={show ? "Hide this link" : "Generate Link!"}
+                            onClick={showAlert}
                         />
                     </div>
                 </Fade>

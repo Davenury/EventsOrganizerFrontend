@@ -8,6 +8,7 @@ import {
     useParams
 } from "react-router-dom";
 import {Button} from "@material-ui/core";
+import { CourseView } from './components/course/CourseView';
 
 function App() {
   return (
@@ -27,7 +28,7 @@ function App() {
             <Route path="/search">
                 <InstructorBasicViewComponent />
             </Route>
-            <Route path="/course/:id" children={<Course />} />
+            <Route path="/course/:id" children={<CourseView />} />
             <Route path="*">
                 <NoMatch />
             </Route>
@@ -40,15 +41,6 @@ function App() {
 function Home(){
     return(
         <div>Home</div>
-    )
-}
-
-function Course(){
-    const { id } = useParams();
-    return(
-        <div>
-            Course number {id}
-        </div>
     )
 }
 
