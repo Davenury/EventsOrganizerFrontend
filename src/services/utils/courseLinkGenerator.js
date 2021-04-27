@@ -1,3 +1,3 @@
 export function generate(id){
-    return "localhost:3000/course/" + id
+    return "https://optimistic-hawking-245bee.netlify.app/course/" + id
 }
