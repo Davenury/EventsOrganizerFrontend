@@ -4,8 +4,7 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link,
-    useParams
+    Link
 } from "react-router-dom";
 import {Button} from "@material-ui/core";
 import { CourseView } from './components/course/CourseView';

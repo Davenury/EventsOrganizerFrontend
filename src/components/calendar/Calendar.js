@@ -11,7 +11,7 @@ export function Calendar(props){
         api.getInstructorsCourses(props.person)
             .then(response => response.map( elem => elem.json() ))
             .then(promises => Promise.all(promises))
-            .then(courses => mapCoursesToEvents(courses))
+            .then(courses => mapCoursesToEvents(courses[0]))
             .then(events => setEvents(events))
     }, [])
 

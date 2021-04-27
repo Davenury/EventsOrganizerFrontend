@@ -33,8 +33,8 @@ export const api = {
     },
 
     getInstructorsCourses: function(people){
-        const promises = people.map( (person, idx) => {
-            return fetch(basicApiLink + "classes/" + (idx + 1), {
+        const promises = people.map( person => {
+            return fetch(basicApiLink + "instructor/" + person.id + "/classes", {
                 method: "GET",
                 headers: {
                     "Content-Type": 'application/json'

@@ -1,5 +1,4 @@
 export const mapCoursesToEvents = courses => {
-    console.log(courses)
     return courses.map(course => createClasses(course))
 }
 

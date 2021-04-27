@@ -71,7 +71,6 @@ const prepareCourseDetails = (course) => {
 export function CourseDetails(props){
 
     const classes = useStyles();
-    console.log(props.course)
 
     return (
         <Box m={2} p={2}>
