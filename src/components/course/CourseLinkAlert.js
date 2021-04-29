@@ -39,7 +39,7 @@ export function CourseLinkAlert(props){
                     horizontal: 'left',
                 }}
                 open={openSnack}
-                autoHideDuration={3000}
+                autoHideDuration={2500}
                 onClose={closeSnack}
                 message="Link Copied!"
             />
