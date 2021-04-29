@@ -5,7 +5,6 @@ import Modal from '@material-ui/core/Modal';
 import { CourseDetails } from './CourseDetails';
 import { Button } from '../../atoms/Button';
 import { green } from '@material-ui/core/colors';
-import { generate } from '../../services/utils/courseLinkGenerator';
 import { CourseLinkAlert } from './CourseLinkAlert';
 import { Box } from "@material-ui/core";
 
