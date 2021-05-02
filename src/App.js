@@ -8,17 +8,43 @@ import {
 } from "react-router-dom";
 import {Button} from "@material-ui/core";
 import { CourseView } from './components/course/CourseView';
+import { makeStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+      flexGrow: 1,
+      justifyContent: "right"
+    },
+    menuButton: {
+      marginRight: theme.spacing(2),
+    },
+    title: {
+      flexGrow: 1,
+    },
+    link: {
+        color: "white",
+        textDecoration: "none"
+    }
+  }));
 
 function App() {
+
+    const classes = useStyles();
   return (
     <div className="App">
       <Router>
-        <Link to="/">
-            <Button>Home</Button>
-        </Link>
-        <Link to="/search">
-            <Button>Search For My Courses</Button>
-        </Link>
+          <AppBar position="static" className={classes.root}>
+              <Toolbar>
+                <Link to="/" className={classes.link}>
+                    <Button color="inherit" className={classes.menuButton}>Home</Button>
+                    </Link>
+                    <Link to="/search" className={classes.link}>
+                        <Button color="inherit" className={classes.menuButton}>Search For My Courses</Button>
+                    </Link>
+            </Toolbar>
+          </AppBar>
 
         <Switch>
             <Route exact path="/">

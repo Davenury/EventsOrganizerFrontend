@@ -18,12 +18,18 @@ export function InstructorBasicViewComponent(){
         return name && surname
     }
 
+    const makeBack = () => {
+        setName("")
+        setSurname("")
+    }
+
     return(
-        <div>
+        <div style={{marginTop: "2%"}}>
         {
             nameAndSurnameArentEmpty()
             ?
                 <InstructorCalendarView
+                    onBack={makeBack}
                     name={name}
                     surname={surname}/>
             :

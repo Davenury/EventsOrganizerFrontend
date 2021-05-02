@@ -4,6 +4,7 @@ import {useEffect, useState} from 'react';
 import { CircularProgress, Box } from "@material-ui/core";
 import { Calendar } from '../calendar/Calendar';
 import swal from 'sweetalert';
+import { Button } from '../../atoms/Button';
 
 export function InstructorCalendarView(props) {
 
@@ -17,21 +18,37 @@ export function InstructorCalendarView(props) {
         getAllThings()
     }, [])
 
+    const assertResponse = response => {
+        if(response === undefined || response === null || response.length === 0)
+            throw "We didn't find any courses for this person"
+    }
+
     const getAllThings = () => {
         api.getInstructorByName(props.name, props.surname)
+            .then(response => {
+                assertResponse(response)
+                return response
+            })
             .then(response => setPerson(response))
             .catch(error =>{
                 setFetching(false)
-                swal("Error", "We've encounter an error while trying to get your classes! " + error, "error")
+                swal("Error", "We've encounter an error while trying to get your classes!\n" + error, "error")
             })
     }
 
+    const back = () => {
+        props.onBack()
+    }
+
     const preparePerson = () => {
-        return <Calendar person={person} />
+        return  <Calendar person={person} />
     }
 
     return (
         <div>
+            <Box mb={2} style={{marginLeft: "5%", textAlign: "left"}}>
+                <Button onClick={back} text="Back!"/>
+            </Box>
             {
                 person ?
                     preparePerson()
