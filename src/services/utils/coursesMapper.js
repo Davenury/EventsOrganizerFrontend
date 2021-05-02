@@ -8,7 +8,6 @@ const createClasses = course => {
         title: course.classesType,
         start: new Date(course.startTime),
         end: new Date(course.endTime),
-        hexColor: 'ababab',
         course: course
     }
 }

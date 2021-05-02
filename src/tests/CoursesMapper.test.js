@@ -17,6 +17,7 @@ let courses = [
         classroom: "1.38",
         endTime: "2021-03-30T09:30:00",
         id: 1,
+        event: 'SFI',
         instructor: {
             id: 1,
             firstName: "Adam", 
@@ -35,6 +36,7 @@ let courses = [
         classroom: "1.38",
         endTime: "2021-03-30T09:30:00",
         id: 1,
+        event: 'SFI',
         instructor: {
             id: 1,
             firstName: "Adam", 
@@ -59,6 +61,7 @@ let events = [{
         classroom: "1.38",
         endTime: "2021-03-30T09:30:00",
         id: 1,
+        event: 'SFI',
         instructor: {
             id: 1,
             firstName: "Adam", 
@@ -82,6 +85,7 @@ let events = [{
         classroom: "1.38",
         endTime: "2021-03-30T09:30:00",
         id: 1,
+        event: 'SFI',
         instructor: {
             id: 1,
             firstName: "Adam", 
