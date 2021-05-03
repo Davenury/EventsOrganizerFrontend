@@ -5,7 +5,7 @@ export const mapCoursesToEvents = courses => {
 
 const createClasses = course => {
     return {
-        title: course.classesType,
+        title: course.event,
         start: new Date(course.startTime),
         end: new Date(course.endTime),
         course: course

@@ -37,9 +37,6 @@ function App() {
       <Router>
           <AppBar position="static" className={classes.root}>
               <Toolbar>
-                <Link to="/" className={classes.link}>
-                    <Button color="inherit" className={classes.menuButton}>Home</Button>
-                    </Link>
                     <Link to="/search" className={classes.link}>
                         <Button color="inherit" className={classes.menuButton}>Search For My Courses</Button>
                     </Link>
@@ -47,9 +44,6 @@ function App() {
           </AppBar>
 
         <Switch>
-            <Route exact path="/">
-                <Home />
-            </Route>
             <Route path="/search">
                 <InstructorBasicViewComponent />
             </Route>
@@ -61,12 +55,6 @@ function App() {
       </Router>
     </div>
   );
-}
-
-function Home(){
-    return(
-        <div>Home</div>
-    )
 }
 
 function NoMatch(){
