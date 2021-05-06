@@ -2,6 +2,30 @@ const basicApiLink = "https://eventsorganizer.herokuapp.com/"
 
 export const api = {
 
+    getInstructors: function(){
+        return fetch(basicApiLink+"instructor/all", {
+            method: "GET",
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(response => response.json())
+    },
+
+    updateInstructors: function(instructors){
+        return instructors.map(elem => {
+            fetch(basicApiLink+"instructor/"+elem.id, {
+                method: "PUT",
+                mode: 'cors',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body:  JSON.stringify(elem)
+            })
+                .then(response => response.json())
+        })
+    },
+
     getInstructorById: function(id){
         return fetch(basicApiLink + "instructor/" + id, {
             method: "GET",
