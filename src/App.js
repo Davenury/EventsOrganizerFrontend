@@ -9,6 +9,7 @@ import {
 import {Button} from "@material-ui/core";
 import { CourseView } from './components/course/CourseView';
 import { makeStyles } from '@material-ui/core/styles';
+import { AdminPanel } from './components/admin_panel/AdminPanel';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 
@@ -48,6 +49,9 @@ function App() {
                 <InstructorBasicViewComponent />
             </Route>
             <Route path="/course/:id" children={<CourseView />} />
+            <Route path="/admin panel">
+                <AdminPanel />
+            </Route>
             <Route path="*">
                 <NoMatch />
             </Route>
