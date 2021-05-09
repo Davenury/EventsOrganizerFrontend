@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { api } from '../../services/apis/EventsApi';
+import { InstructorView } from './InstructorView';
+
 
 export function AdminPanel(props){
     
@@ -23,10 +25,7 @@ export function AdminPanel(props){
 
     const getComponentForEachInstructor = instructors.map((instructor,idx) => {
         return (
-            <div>
-                <label>{instructor.firstName} {instructor.lastName}</label> 
-                <input type="email" value={instructor.email} onChange={onChangeValue(idx)}/>
-        </div>
+            <InstructorView instructorProp={instructor}/>
         )
     })
 
