@@ -1,8 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import { api } from '../../services/apis/EventsApi';
-import { TextField } from '@material-ui/core';
+import { TextField, Box, Grid } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles({
+    root: {
+        padding: '10px'
+    },
+    children:{
+        '& *':
+            {
+                padding: '0 10px',
+            }
+    }
+  });
 
 export function InstructorView({instructorProp}){
+
+    const classes = useStyles();
     
     const [instructor, setInstructor] = useState(instructorProp)
     const [isChangeMode, setIsChangeMode] = useState(false)
@@ -24,15 +39,20 @@ export function InstructorView({instructorProp}){
 
 
     return(
-        <div>
+        <Grid   container
+        direction="row"
+        justify="center"
+        alignItems="center"
+        className={`${classes.root} ${classes.children}`}
+        >
             <label>{instructor.firstName} {instructor.lastName}</label>
             {!isChangeMode ? (
                 <button variant="contained" onClick={changeFunction}>Change instructor</button>
-                ) : (<div>
+                ) : (<div className={classes.children}>
                     <TextField type="email" value={instructor.email} onChange={onChangeValue}/>
                     <button variant="contained" onClick={submitFunction}>Submit</button>
                 </div>
             )}
-        </div>
+        </Grid>
     )
 }
