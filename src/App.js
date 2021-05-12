@@ -4,7 +4,8 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link
+    Link,
+    Redirect
 } from "react-router-dom";
 import {Button} from "@material-ui/core";
 import { CourseView } from './components/course/CourseView';
@@ -12,6 +13,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { AdminPanel } from './components/admin_panel/AdminPanel';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
+import { Page404 } from './components/utils/404';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -45,6 +47,9 @@ function App() {
           </AppBar>
 
         <Switch>
+            <Route exact path="/">
+              <Redirect to="/search" />
+            </Route>
             <Route path="/search">
                 <InstructorBasicViewComponent />
             </Route>
@@ -53,18 +58,12 @@ function App() {
                 <AdminPanel />
             </Route>
             <Route path="*">
-                <NoMatch />
+                <Page404 />
             </Route>
         </Switch>
       </Router>
     </div>
   );
-}
-
-function NoMatch(){
-    return(
-        <p>Oh no, looks like you've found some 404! </p>
-    )
 }
 
 export default App;
