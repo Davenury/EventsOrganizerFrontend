@@ -51,7 +51,7 @@ let courses = [
 ]
 
 let events = [{
-        title: "LECTURE",
+        title: "SFI",
         start: new Date("2021-03-30T08:00:00"),
         end: new Date("2021-03-30T09:30:00"),
         course: {
@@ -75,7 +75,7 @@ let events = [{
         }
     },
     {
-        title: "LECTURE",
+        title: "SFI",
         start: new Date("2021-03-30T08:00:00"),
         end: new Date("2021-03-30T09:30:00"),
         course: {
