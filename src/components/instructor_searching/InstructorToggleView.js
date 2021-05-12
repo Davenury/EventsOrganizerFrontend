@@ -2,7 +2,8 @@ import react, { useState, useEffect } from 'react'
 import { api } from "../../services/apis/EventsApi";
 import swal from 'sweetalert';
 import { InstructorTogglePresentation } from './InstructorTogglePresentation';
-import { Box, CircularProgress } from '@material-ui/core';
+import { Box, CircularProgress, Grid } from '@material-ui/core';
+import { Button } from '../../atoms/Button';
 
 export const InstructorToggleView = (props) => {
     
@@ -33,11 +34,37 @@ export const InstructorToggleView = (props) => {
             })
     }
 
+    const setNewType = () => {
+        if(type === "list")
+            setType("calendar")
+        else
+            setType("list")
+    }
+
+    const getTextForTypeButton = () => {
+        if(type === "list") return "Calendar"
+        return "List"
+    }
+
     return(
         <div>
             {
                 person ?
-                    <InstructorTogglePresentation onBack={props.onBack} person={person}/>
+                <div>
+                    <Grid container>
+                        <Grid item xs={6}>
+                            <Box mb={2} style={{marginLeft: "5%", textAlign: "left"}}>
+                                <Button onClick={() => props.onBack()} text="Back!"/>
+                            </Box>
+                        </Grid>
+                        <Grid item xs={6}>
+                            <Box mb={2} style={{marginRight: "5%", textAlign: "right"}}>
+                                <Button onClick={() => setNewType()} text={getTextForTypeButton()}/>
+                            </Box>
+                        </Grid>
+                    </Grid>
+                    <InstructorTogglePresentation person={person} type={type}/>
+                </div>
                     :
                     <div>
                         {

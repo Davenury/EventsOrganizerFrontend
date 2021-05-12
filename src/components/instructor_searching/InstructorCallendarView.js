@@ -3,13 +3,7 @@ import { CircularProgress, Box } from "@material-ui/core";
 import { Calendar } from '../calendar/Calendar';
 import { mapCoursesToEvents } from '../../services/utils/coursesMapper';
 
-import { Button } from '../../atoms/Button';
-
 export function InstructorCalendarView(props) {
-
-    const back = () => {
-        props.onBack()
-    }
 
     const prepareEvents = () => {
         return mapCoursesToEvents(props.events)
@@ -22,7 +16,6 @@ export function InstructorCalendarView(props) {
     return (
         <div>
             <Box mb={2} style={{marginLeft: "5%", textAlign: "left"}}>
-                <Button onClick={back} text="Back!"/>
                 { preparePerson() }
             </Box>
         </div>

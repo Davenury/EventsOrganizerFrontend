@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import { InstructorCalendarView } from './InstructorCallendarView';
 import { api } from "../../services/apis/EventsApi";
+import { InstructorCoursesListView } from './InstructorCoursesListView';
 
 export const InstructorTogglePresentation = (props) => {
 
-    const [events, setEvents] = useState(null)
+    const [events, setEvents] = useState([])
 
     useEffect(() => {
         api.getInstructorsCourses(props.person)
@@ -15,10 +16,15 @@ export const InstructorTogglePresentation = (props) => {
 
     return(
         <div>
-            <InstructorCalendarView
-                onBack={props.onBack}
-                person={props.person}
-                events={events}/>
+            {
+                props.type === "list" ?
+                    <InstructorCoursesListView 
+                        events={events}
+                    />
+                :
+                <InstructorCalendarView
+                    events={events}/>
+            }
         </div>
     )
 }
