@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
@@ -42,14 +42,41 @@ export function CalendarView(props){
         setOpenModal(false)
     }
 
+    const [width, setWidth] = useState(window.innerWidth);
+
+    function handleWindowSizeChange() {
+        setWidth(window.innerWidth);
+    }
+
+    useEffect(() => {
+        window.addEventListener('resize', handleWindowSizeChange);
+        return () => {
+            window.removeEventListener('resize', handleWindowSizeChange);
+        }
+    }, []);
+
+    let isMobile = (width <= 768);
+
     return(
         <div style={{height: "80vh", width: "90%", marginLeft: "auto", marginRight: "auto"}}>
-            <Calendar
-                localizer={localizer}
-                events={props.events}
-                onSelectEvent={eventSelected}
-                eventPropGetter={eventStyleGetter}
-            />
+            {
+                isMobile 
+                ?
+                <Calendar
+                    localizer={localizer}
+                    events={props.events}
+                    onSelectEvent={eventSelected}
+                    eventPropGetter={eventStyleGetter}
+                    view="day"
+                />
+                :
+                <Calendar
+                    localizer={localizer}
+                    events={props.events}
+                    onSelectEvent={eventSelected}
+                    eventPropGetter={eventStyleGetter}
+                />
+            }
             <CourseModal 
                 open={openModal}
                 handleOpen={handleOpenModal}
