@@ -13,10 +13,10 @@ export const Page404 = (props) => {
     }
 
     return(
-        <div style={{textAlign: "left", marginTop: "10vh", marginLeft: "5%", marginRight: "15%"}}>
+        <div style={{textAlign: "left", marginTop: "10vh", marginLeft: "5%", marginRight: "20%"}}>
             <Grid container direction={'row'} wrap="nowrap">
                 <Grid container direction={'column'} spacing={3}>
-                    <Grid item xs={12} sm={8}>
+                    <Grid item xs={12} sm={8} >
                         <Box p={1}>
                             <Typography variant="h4">
                                 Oops... Something's Wrong!
