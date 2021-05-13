@@ -15,14 +15,16 @@ afterEach(() => {
     container = null
 });
 
+const dummyFunction = () => {}
+
 it("renders with text", () => {
     act(() => {
-        render(<Button />, container);
+        render(<Button onClick={dummyFunction}/>, container);
     })
     expect(container.textContent).toBe("Oops, something should be here!")
 
     act(() => {
-        render(<Button text="Search!"/>, container)
+        render(<Button text="Search!" onClick={dummyFunction}/>, container)
     })
     expect(container.textContent).toBe("Search!")
 })
