@@ -2,6 +2,7 @@ import {InstructorInputComponent} from "./InstructorInputComponent";
 
 import {InstructorCalendarView} from "./InstructorCallendarView";
 import {useState} from "react";
+import { InstructorToggleView } from "./InstructorToggleView";
 
 
 export function InstructorBasicViewComponent(){
@@ -28,10 +29,7 @@ export function InstructorBasicViewComponent(){
         {
             nameAndSurnameArentEmpty()
             ?
-                <InstructorCalendarView
-                    onBack={makeBack}
-                    name={name}
-                    surname={surname}/>
+                <InstructorToggleView onBack={makeBack} name={name} surname={surname}/>
             :
                 <InstructorInputComponent
                     handleSubmit={handleSubmit}/>

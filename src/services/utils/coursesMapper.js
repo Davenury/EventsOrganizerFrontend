@@ -1,6 +1,6 @@
 export const mapCoursesToEvents = courses => {
     console.log(courses)
-    return courses.map(course => createClasses(course))
+    return courses != null ? courses.map(course => createClasses(course)) : []
 }
 
 const createClasses = course => {
