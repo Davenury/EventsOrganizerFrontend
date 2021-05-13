@@ -32,38 +32,48 @@ const useStyles = makeStyles((theme) => ({
     }
   }));
 
+const createSwitchElement = (path, component) => {
+  return {
+    path: path,
+    component: component
+  }
+}
+
+const switchElements = [
+  createSwitchElement("/search", <InstructorBasicViewComponent />),
+  createSwitchElement("/admin_panel", <AdminPanel />),
+  createSwitchElement("*", <Page404 />)
+]
+
 function App() {
 
     const classes = useStyles();
-  return (
-    <div className="App">
-      <Router>
-          <AppBar position="static" className={classes.root}>
-              <Toolbar>
-                    <Link to="/search" className={classes.link}>
-                        <Button color="inherit" className={classes.menuButton}>Search For My Courses</Button>
-                    </Link>
-            </Toolbar>
-          </AppBar>
 
-        <Switch>
-            <Route exact path="/">
-              <Redirect to="/search" />
-            </Route>
-            <Route path="/search">
-                <InstructorBasicViewComponent />
-            </Route>
-            <Route path="/course/:id" children={<CourseView />} />
-            <Route path="/admin panel">
-                <AdminPanel />
-            </Route>
-            <Route path="*">
-                <Page404 />
-            </Route>
-        </Switch>
-      </Router>
-    </div>
-  );
+    const getSwitchElements = () => {
+      return switchElements.map(element => <Route path={element.path} key={element.path}>{element.component}</Route>)
+    }
+
+    return (
+      <div className="App">
+        <Router>
+            <AppBar position="static" className={classes.root}>
+                <Toolbar>
+                      <Link to="/search" className={classes.link}>
+                          <Button color="inherit" className={classes.menuButton}>Search For My Courses</Button>
+                      </Link>
+              </Toolbar>
+            </AppBar>
+
+          <Switch>
+              <Route exact path="/">
+                <Redirect to="/search" />
+              </Route>
+              <Route path="/course/:id" children={<CourseView />} />
+              {getSwitchElements()}
+          </Switch>
+        </Router>
+      </div>
+    );
 }
 
 export default App;
