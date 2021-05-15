@@ -18,4 +18,3 @@ There are two more parts of this project:
 2. Install all packages by typing npm install
 3. Type npm start to start up this application (on your localhost).
 
-Please, notice that in file that covers api, there's a basic link of http://localhost:8080 - it's only in development mode and for now, it doesn't really use any api.
