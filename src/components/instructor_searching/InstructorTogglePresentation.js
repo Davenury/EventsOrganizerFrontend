@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { InstructorCalendarView } from './InstructorCallendarView';
 import { api } from "../../services/apis/EventsApi";
-import { InstructorCoursesListView } from './InstructorCoursesListView';
+import { CoursesListView } from '../course/InstructorCoursesListView';
 
 export const InstructorTogglePresentation = (props) => {
 
@@ -18,7 +18,7 @@ export const InstructorTogglePresentation = (props) => {
         <div>
             {
                 props.type === "list" ?
-                    <InstructorCoursesListView 
+                    <CoursesListView 
                         events={events}
                     />
                 :
