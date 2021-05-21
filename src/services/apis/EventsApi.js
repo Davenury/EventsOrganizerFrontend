@@ -71,6 +71,20 @@ export const api = {
             })
         })
         return Promise.all(promises)
+    },
+
+    postAdminLogin: function(username, password) {
+        return fetch(basicApiLink + "admin/login",{
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                "username": username,
+                "password": password
+            })
+        })
+            .then(response => response.json())
     }
 
 }

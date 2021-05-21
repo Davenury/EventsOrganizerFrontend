@@ -6,6 +6,7 @@ export function TextField(props) {
         <Box m={props.margin} p={props.padding} mb={props.mb}>
             <TF
                 id="standard-basic"
+                type={props.type}
                 label={props.label}
                 value={props.value}
                 onChange={props.onChange}/>
@@ -24,6 +25,7 @@ TextField.propTypes = {
     margin: PropTypes.number,
     padding: PropTypes.number,
     value: PropTypes.string,
+    type: PropTypes.string,
     onChange: PropTypes.func.isRequired,
     label: PropTypes.string.isRequired,
     mb: PropTypes.number
