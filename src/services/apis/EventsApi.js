@@ -71,6 +71,24 @@ export const api = {
             })
         })
         return Promise.all(promises)
+    },
+
+    getAllEvents: function(){
+        return fetch(basicApiLink + '/classes/events/all', {
+            method: "GET",
+            headers: {
+                "Content-Type": 'application/json'
+            }
+        })
+    },
+
+    getAllCoursesInEvents: function(name){
+        return fetch(basicApiLink + `/classes/where?event=${name}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": 'application/json'
+            }
+        })
     }
 
 }
