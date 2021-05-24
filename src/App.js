@@ -14,6 +14,7 @@ import { AdminView } from './components/admin_panel/AdminView';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import { Page404 } from './components/utils/404';
+import { EventList } from './components/event_view/EventList';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -42,7 +43,20 @@ const createSwitchElement = (path, component) => {
 const switchElements = [
   createSwitchElement("/search", <InstructorBasicViewComponent />),
   createSwitchElement("/admin_panel", <AdminView />),
+  createSwitchElement("/events", <EventList />),
   createSwitchElement("*", <Page404 />)
+]
+
+const createLinkElement = (to, buttonText) => {
+  return {
+    to: to,
+    buttonText: buttonText
+  }
+}
+
+const linksElements = [
+  createLinkElement("/search", "Search For My Courses"),
+  createLinkElement("/events", "Search Events")
 ]
 
 function App() {
@@ -53,14 +67,16 @@ function App() {
       return switchElements.map(element => <Route path={element.path} key={element.path}>{element.component}</Route>)
     }
 
+    const getLinksElements = () => {
+      return linksElements.map(element => <Link to={element.to} className={classes.link} ><Button color="inherit" className={classes.menuButton}>{element.buttonText}</Button></Link>)
+    }
+
     return (
       <div className="App">
         <Router>
             <AppBar position="static" className={classes.root}>
                 <Toolbar>
-                      <Link to="/search" className={classes.link}>
-                          <Button color="inherit" className={classes.menuButton}>Search For My Courses</Button>
-                      </Link>
+                      {getLinksElements()}
               </Toolbar>
             </AppBar>
 
