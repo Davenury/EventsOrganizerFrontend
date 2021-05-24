@@ -1,13 +1,15 @@
 const basicApiLink = "https://eventsorganizer.herokuapp.com/"
 
+const header = {
+    'Content-Type': 'application/json'
+}
+
 export const api = {
 
     getInstructors: function () {
         return fetch(basicApiLink + "instructor/all", {
             method: "GET",
-            headers: {
-                'Content-Type': 'application/json'
-            }
+            headers: header
         })
             .then(response => response.json())
     },
@@ -22,9 +24,7 @@ export const api = {
         fetch(basicApiLink + "instructor/" + instructor.id, {
             method: "PUT",
             mode: 'cors',
-            headers: {
-                'Content-Type': 'application/json'
-            },
+            headers: header,
             body: JSON.stringify(instructor)
         })
             .then(response => response.json())
@@ -34,9 +34,7 @@ export const api = {
     getInstructorById: function (id) {
         return fetch(basicApiLink + "instructor/" + id, {
             method: "GET",
-            headers: {
-                'Content-Type': 'application/json'
-            }
+            headers: header
         })
             .then(response => response.json())
     },
@@ -44,9 +42,7 @@ export const api = {
     getInstructorByName: function (name, surname) {
         return fetch(basicApiLink + "instructor/where?firstName=" + name + "&lastName=" + surname, {
             method: "GET",
-            headers: {
-                'Content-Type': 'application/json'
-            }
+            headers: header
         })
             .then(response => response.json())
     },
@@ -54,9 +50,7 @@ export const api = {
     getCourseById: function (id) {
         return fetch(basicApiLink + "classes/" + id, {
             method: "GET",
-            headers: {
-                "Content-Type": 'application/json'
-            }
+            headers: header
         })
             .then(response => response.json())
     },
@@ -65,9 +59,7 @@ export const api = {
         const promises = people.map(person => {
             return fetch(basicApiLink + "instructor/" + person.id + "/classes", {
                 method: "GET",
-                headers: {
-                    "Content-Type": 'application/json'
-                }
+                headers: header
             })
         })
         return Promise.all(promises)
@@ -76,9 +68,7 @@ export const api = {
     postAdminLogin: function(username, password) {
         return fetch(basicApiLink + "admin/login",{
             method: "POST",
-            headers: {
-                'Content-Type': 'application/json'
-            },
+            headers: header,
             body: JSON.stringify({
                 "username": username,
                 "password": password
@@ -90,19 +80,29 @@ export const api = {
     getAllEvents: function(){
         return fetch(basicApiLink + '/classes/events/all', {
             method: "GET",
-            headers: {
-                "Content-Type": 'application/json'
-            }
+            headers: header
         })
     },
 
-    getAllCoursesInEvents: function(name){
-        return fetch(basicApiLink + `/classes/where?event=${name}`, {
+    getAllCoursesInEvents: function(eventName){
+        return this.getCourseByParams({"event":eventName})
+    },
+
+    getCourseByParams: function(params) {
+        const urlParams = Object.entries(params).map(([key,value],idx) => key+"="+value).join("&")
+        return fetch(basicApiLink+"classes/where?"+urlParams,{
             method: "GET",
-            headers: {
-                "Content-Type": 'application/json'
-            }
+            headers: header
         })
-    }
+    },
+
+    updateCourse: function (course) {
+        fetch(basicApiLink + "classes/" + course.id, {
+            method: "PUT",
+            mode: 'cors',
+            headers: header,
+            body: JSON.stringify(course)
+        }).then(response => console.log(response.json()))
+    },
 
 }
