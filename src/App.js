@@ -10,7 +10,7 @@ import {
 import {Button} from "@material-ui/core";
 import { CourseView } from './components/course/CourseView';
 import { makeStyles } from '@material-ui/core/styles';
-import { AdminPanel } from './components/admin_panel/AdminPanel';
+import { AdminView } from './components/admin_panel/AdminView';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import { Page404 } from './components/utils/404';
@@ -42,8 +42,8 @@ const createSwitchElement = (path, component) => {
 
 const switchElements = [
   createSwitchElement("/search", <InstructorBasicViewComponent />),
+  createSwitchElement("/admin_panel", <AdminView />),
   createSwitchElement("/events", <EventList />),
-  createSwitchElement("/admin_panel", <AdminPanel />),
   createSwitchElement("*", <Page404 />)
 ]
 
