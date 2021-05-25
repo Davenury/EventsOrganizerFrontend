@@ -35,7 +35,6 @@ export function CourseComponent({ courseProp }) {
         delete newObj["id"]
 
 
-        console.log(JSON.stringify(newObj))
         api.updateCourse(course.id,newObj)
     }
 
