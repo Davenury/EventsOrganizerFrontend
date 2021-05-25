@@ -46,20 +46,31 @@ export const InstructorToggleView = (props) => {
         return "List"
     }
 
+    const downloadSheet = () => {
+        console.log(person[0])
+        api.downloadSheet(person[0].id)
+    }
+
+
     return(
         <div>
             {
                 person ?
                 <div>
                     <Grid container>
-                        <Grid item xs={6}>
+                        <Grid item xs={4}>
                             <Box mb={2} style={{marginLeft: "5%", textAlign: "left"}}>
                                 <Button onClick={() => props.onBack()} text="Back!"/>
                             </Box>
                         </Grid>
-                        <Grid item xs={6}>
+                        <Grid item xs={4}>
                             <Box mb={2} style={{marginRight: "5%", textAlign: "right"}}>
                                 <Button onClick={() => setNewType()} text={getTextForTypeButton()}/>
+                            </Box>
+                        </Grid>
+                        <Grid item xs={4}>
+                            <Box mb={2} style={{marginRight: "5%", textAlign: "right"}}>
+                                <Button onClick={downloadSheet} text={"Download sheet for "+person.firstName+" "+person.lastName}/>
                             </Box>
                         </Grid>
                     </Grid>

@@ -105,4 +105,9 @@ export const api = {
         }).then(response => console.log(response.json()))
     },
 
+    downloadSheet: function (instructorId){
+        console.log(basicApiLink+"/excel/export?instructorId="+instructorId)
+        window.open(basicApiLink+"/excel/export?instructorId="+instructorId,"_blank")
+    }
+
 }
