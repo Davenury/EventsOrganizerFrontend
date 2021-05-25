@@ -3,6 +3,7 @@ import Alert from '@material-ui/lab/Alert';
 import { generate } from '../../services/utils/courseLinkGenerator';
 import { Button } from '../../atoms/Button';
 import Snackbar from '@material-ui/core/Snackbar';
+import { Grid } from '@material-ui/core';
 
 export function CourseLinkAlert(props){
 
@@ -24,25 +25,25 @@ export function CourseLinkAlert(props){
 
     return (
         <Alert severity="success">
-            Here's your link:
-            <div style={{display: "table", clear:"both"}}>
-                <div style={{width: "70%", float: "left"}}>
-                    {link}
-                </div>
-                <div style={{width: "20%", float: "left", position: "absolute", right: "10%"}}>
-                    <Button text="copy" onClick={copyToClipboard}/>
-                </div>
-            </div>
-            <Snackbar
-                anchorOrigin={{
-                    vertical: 'bottom',
-                    horizontal: 'left',
-                }}
-                open={openSnack}
-                autoHideDuration={2500}
-                onClose={closeSnack}
-                message="Link Copied!"
-            />
+            <Grid container spacing={1}>
+                    <Grid item xs={12} sm={8}>
+                        Here's your link: <br />
+                        {link}
+                    </Grid>
+                    <Grid item xs={12} sm={4} style={{textAlign: 'right'}}>
+                            <Button text="copy" onClick={copyToClipboard}/>
+                        </Grid>
+                    <Snackbar
+                        anchorOrigin={{
+                            vertical: 'bottom',
+                            horizontal: 'left',
+                        }}
+                        open={openSnack}
+                        autoHideDuration={2500}
+                        onClose={closeSnack}
+                        message="Link Copied!"
+                    />
+            </Grid>
         </Alert>
     )
 }

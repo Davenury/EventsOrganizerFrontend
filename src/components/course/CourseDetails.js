@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box } from '@material-ui/core';
+import { Box, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -20,10 +20,6 @@ const useStyles = makeStyles((theme) => ({
         clear: "both",
         content: "",
         width: "100%"
-    },
-    column:{
-        float: "left",
-        width: "50%"
     }
 }));
 
