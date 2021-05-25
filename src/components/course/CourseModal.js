@@ -6,10 +6,13 @@ import { CourseDetails } from './CourseDetails';
 import { Button } from '../../atoms/Button';
 import { green } from '@material-ui/core/colors';
 import { CourseLinkAlert } from './CourseLinkAlert';
-import { Box } from "@material-ui/core";
+import { Box, Grid } from "@material-ui/core";
 
 
 const useStyles = makeStyles((theme) => ({
+    root: {
+        flexGrow: 1,
+    },
     modal: {
       display: 'flex',
       alignItems: 'center',
@@ -19,8 +22,7 @@ const useStyles = makeStyles((theme) => ({
     paper: {
       backgroundColor: theme.palette.background.paper,
       boxShadow: theme.shadows[5],
-      padding: theme.spacing(4, 4, 4),
-      width: "60%"
+      padding: theme.spacing(4, 4, 4)
     },
 }));
 
@@ -35,28 +37,32 @@ export function CourseModal(props){
     }
 
     return (
-        <div>
-            <Modal
-                open={props.open}
-                onClose={props.handleClose}
-                className={classes.modal}
-            >
-                <Fade in={props.open}>
-                    <div className={classes.paper}>
-                        <CourseDetails
-                            course={props.course}
-                        />
-                        <Box m={2}>
-                            {show ? <CourseLinkAlert id={props.course.id}/> : <div></div>}
-                        </Box>
-                        <Button 
-                            color={green}
-                            text={show ? "Hide this link" : "Generate Link!"}
-                            onClick={showAlert}
-                        />
-                    </div>
-                </Fade>
-            </Modal>
+        <div className={classes.root}>
+            <Grid container>
+                <Grid item xs={12} sm={6}>
+                    <Modal
+                        open={props.open}
+                        onClose={props.handleClose}
+                        className={classes.modal}
+                    >
+                        <Fade in={props.open}>
+                            <div className={classes.paper}>
+                                        <CourseDetails
+                                            course={props.course}
+                                        />
+                                <Box m={2}>
+                                    {show ? <CourseLinkAlert id={props.course.id}/> : <div></div>}
+                                </Box>
+                                <Button 
+                                    color={green}
+                                    text={show ? "Hide this link" : "Generate Link!"}
+                                    onClick={showAlert}
+                                />
+                            </div>
+                        </Fade>
+                    </Modal>
+                </Grid>
+            </Grid>
         </div>
     )
 }
