@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { api } from '../../services/apis/EventsApi';
-import { TextField, Box, Grid } from '@material-ui/core';
+import { TextField, Button, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
@@ -47,10 +47,11 @@ export function InstructorView({instructorProp}){
         >
             <label>{instructor.firstName} {instructor.lastName}</label>
             {!isChangeMode ? (
-                <button variant="contained" onClick={changeFunction}>Change instructor</button>
+                <Button variant="contained" color="primary" onClick={changeFunction}>Change instructor</Button>
                 ) : (<div className={classes.children}>
                     <TextField type="email" value={instructor.email} onChange={onChangeValue}/>
-                    <button variant="contained" onClick={submitFunction}>Submit</button>
+                    <Button variant="outlined" color="primary" onClick={submitFunction} style={{marginRight: "5px"}}>Submit</Button>
+                    <Button variant="outlined" color="secondary" onClick={() => setIsChangeMode(false)} >X</Button>
                 </div>
             )}
         </Grid>
