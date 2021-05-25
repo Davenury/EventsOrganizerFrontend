@@ -40,23 +40,23 @@ const prepareCourseDetails = (course) => {
     return Object.entries(course).map(([key, value]) => {
         if(key === "instructor"){
             return (
-                <div>
+                <Grid item xs={12} sm={6}>
                     {propertiesToHumanRedableNames[key]}: {value.firstName} {value.lastName}
-                </div>
+                </Grid>
             )
         }
         else if((key === "startTime" || key === "endTime") && value !== null){
             return(
-                <div>
+                <Grid item xs={12} sm={6}>
                     {propertiesToHumanRedableNames[key]}: {new Date(value).toLocaleString()}
-                </div>
+                </Grid>
             )
         }
         else if(value !== null && Object.keys(propertiesToHumanRedableNames).includes(key)){
             return (
-                <div>
+                <Grid item xs={12} sm={6}>
                     {propertiesToHumanRedableNames[key]}: {value}
-                </div>
+                </Grid>
             )
         }
         else return null
@@ -78,7 +78,9 @@ export function CourseDetails(props){
                     >
                         {props.course.name}
                     </Typography>
+                    <Grid container spacing={1} style={{marginTop: "1em"}}>
                     { prepareCourseDetails(props.course) }
+                    </Grid>
                 </CardContent>
             </Card>
         </Box>
