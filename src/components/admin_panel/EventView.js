@@ -28,7 +28,6 @@ export function EventView({ eventName }) {
         api.getAllCoursesInEvents(eventName)
             .then(response => response.json())
             .then(data => {
-                console.log(data)
                 setCourses(
                     data.map(elem => {
                         return {

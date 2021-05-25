@@ -20,11 +20,23 @@ export function CourseComponent({ courseProp }) {
 
     const [course, setCourse] = useState(courseProp)
 
+
     const submitFunction = () => {
-        const newObj = { ...course }
+        const newObj = { 
+            ...course,
+            firstName: course.instructor.firstName,
+            lastName: course.instructor.lastName,
+            startTime: api.modifyDateToBackendFormat(course.startTime),
+            endTime: api.modifyDateToBackendFormat(course.endTime)
+        }
         delete newObj["date"]
-        console.log(newObj)
-        api.updateCourse(newObj)
+        delete newObj["instructor"]
+        delete newObj["reminderNote"]
+        delete newObj["id"]
+
+
+        console.log(JSON.stringify(newObj))
+        api.updateCourse(course.id,newObj)
     }
 
     const onChangeByKey = (key) =>

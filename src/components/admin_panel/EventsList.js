@@ -13,7 +13,6 @@ export function EventsList(props) {
         api.getAllEvents()
             .then(promises => promises.json())
             .then(events => {
-                console.log(events)
                 setEvents(events)
             })
     }, [])

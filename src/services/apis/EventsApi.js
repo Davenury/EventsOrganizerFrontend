@@ -96,8 +96,8 @@ export const api = {
         })
     },
 
-    updateCourse: function (course) {
-        fetch(basicApiLink + "classes/" + course.id, {
+    updateCourse: function (id,course) {
+        fetch(basicApiLink + "classes/" + id, {
             method: "PUT",
             mode: 'cors',
             headers: header,
@@ -106,8 +106,17 @@ export const api = {
     },
 
     downloadSheet: function (instructorId){
-        console.log(basicApiLink+"/excel/export?instructorId="+instructorId)
         window.open(basicApiLink+"/excel/export?instructorId="+instructorId,"_blank")
+    },
+
+    modifyDateToBackendFormat: function(date){
+        const dateTime = date.split("T")
+        const newDate = dateTime[0]
+        const time = dateTime[1].replace(":",".").slice(0,5)
+        console.log(newDate+" "+time)
+        return newDate+" "+time
     }
+
+    
 
 }
