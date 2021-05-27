@@ -39,9 +39,9 @@ export function EventView({ eventName }) {
     }, [])
 
     const groupByDate = () =>
-        courses.reduce((r, a) => {
-            r[a.date] = [...r[a.date] || [], a];
-            return r;
+        courses.reduce((collection, elem) => {
+            collection[elem.date] = [...collection[elem.date] || [], elem];
+            return collection;
         }, {});
 
     const coursesComponents = (courses) => {

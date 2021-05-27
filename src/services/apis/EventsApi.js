@@ -113,7 +113,6 @@ export const api = {
         const dateTime = date.split("T")
         const newDate = dateTime[0]
         const time = dateTime[1].replace(":",".").slice(0,5)
-        console.log(newDate+" "+time)
         return newDate+" "+time
     }
 
