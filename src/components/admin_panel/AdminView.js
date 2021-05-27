@@ -3,10 +3,13 @@ import {AdminLoginInput} from "./AdminLoginInput";
 import {AdminPanel} from "./AdminPanel";
 import {api} from "../../services/apis/EventsApi"
 import swal from 'sweetalert';
+import { EventsList } from './EventsList';
+import { Button } from '@material-ui/core';
 
 export function AdminView(){
 
     const [loggedIn, setLoggedIn] = useState(false)
+    const [isUserSection,setUserSection] = useState(false)
 
     const handleSubmit = (username, password) => {
         api.postAdminLogin(username, password)
@@ -16,12 +19,30 @@ export function AdminView(){
         })
     }
 
+
+    const getButtonText = () =>  {
+        return isUserSection?"Change to events admin section": "Change to user admin section"
+    }
+
+    const onClick = ()=> setUserSection(!isUserSection)
+    
+
+    const getContent = () => {
+
+        return (
+            <div>
+            <Button variant="contained" onClick={onClick}>{getButtonText()}</Button>
+            {(isUserSection?<AdminPanel/>:<EventsList/>)}
+            </div>
+        )
+    }
+
     return(
         <div style={{marginTop: "2%"}}>
             {
                 loggedIn
                     ?
-                    <AdminPanel/>
+                    getContent()
                     :
                     <AdminLoginInput handleSubmit={handleSubmit}/>
             }
