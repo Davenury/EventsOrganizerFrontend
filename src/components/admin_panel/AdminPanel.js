@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { api } from '../../services/apis/EventsApi';
 import { InstructorView } from './InstructorView';
+import { Button, Grid } from '@material-ui/core';
 
 
 export function AdminPanel(props){
@@ -24,7 +25,7 @@ export function AdminPanel(props){
 
     const getComponentForEachInstructor = instructors.map((instructor,idx) => {
         return (
-            <InstructorView instructorProp={instructor}/>
+            <Grid item xs={12} sm={6}><InstructorView instructorProp={instructor}/></Grid>
         )
     })
 
@@ -34,8 +35,10 @@ export function AdminPanel(props){
     return(
         <div style={{height: "80vh", width: "90%", marginLeft: "auto", marginRight: "auto"}}>
             <h1>Admin Panel</h1>
+            <Grid container>
             {getComponentForEachInstructor}
-            <button type="button" onClick={submitFunction}>Submit</button>
+            </Grid>
+            <Button color="primary" variant="contained" onClick={submitFunction} style={{marginBottom: "10px", marginTop: "10px"}}>Submit</Button>
         </div>
     )
 }

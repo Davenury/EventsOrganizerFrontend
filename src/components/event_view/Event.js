@@ -34,7 +34,7 @@ export const Event = (props) => {
         </CardContent>
         <CardActions>
             <div style={{textAlign: "right"}}>
-                <Button size="small" onClick={handleEventClick}>View Courses!</Button>
+                <Button size="small" onClick={handleEventClick} variant="outlined" color="primary">View Courses!</Button>
             </div>
         </CardActions>
       </Card>

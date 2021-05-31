@@ -10,6 +10,7 @@ export const EventList = (props) => {
     const [events, setEvents] = useState([])
     const [toggle, setToggle] = useState(true)  //true - events, false - one event list
     const [toggledEvent, setToggledEvent] = useState(null)
+    console.log(events)
 
     useEffect(() => {
         api.getAllEvents()

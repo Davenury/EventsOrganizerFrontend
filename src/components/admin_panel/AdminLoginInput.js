@@ -22,7 +22,7 @@ export function AdminLoginInput(props){
 
     return(
         <div>
-            <h1>Admin Panel Login</h1>
+            <h1>Admin Panel</h1>
             <TextField label="username" value={username} onChange={handleUsernameChange} />
             <TextField mb={2} type="password" label="password" value={password} onChange={handlePasswordChange} />
             <Button text="Submit" onClick={handleSubmit}/>
