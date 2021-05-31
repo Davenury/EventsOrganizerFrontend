@@ -12,7 +12,6 @@ export function AdminPanel(props){
         api.getInstructors()
             .then(promises => Promise.all(promises))
             .then(events => {
-                console.log(events)
                 setInstructors(events)
             })
     }, [])
