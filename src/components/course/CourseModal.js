@@ -47,9 +47,9 @@ export function CourseModal(props){
                     >
                         <Fade in={props.open}>
                             <div className={classes.paper}>
-                                        <CourseDetails
-                                            course={props.course}
-                                        />
+                                <CourseDetails
+                                    course={props.course}
+                                />
                                 <Box m={2}>
                                     {show ? <CourseLinkAlert id={props.course.id}/> : <div></div>}
                                 </Box>
