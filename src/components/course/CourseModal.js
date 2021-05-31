@@ -7,6 +7,7 @@ import { Button } from '../../atoms/Button';
 import { green } from '@material-ui/core/colors';
 import { CourseLinkAlert } from './CourseLinkAlert';
 import { Box, Grid } from "@material-ui/core";
+import { IconButton } from '@material-ui/core';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -47,9 +48,14 @@ export function CourseModal(props){
                     >
                         <Fade in={props.open}>
                             <div className={classes.paper}>
-                                <CourseDetails
-                                    course={props.course}
-                                />
+                                <div style={{float:"right"}}>
+                                    <IconButton onClick={props.handleClose}>
+                                        &#10005;
+                                    </IconButton>
+                                </div>
+                                        <CourseDetails
+                                            course={props.course}
+                                        />
                                 <Box m={2}>
                                     {show ? <CourseLinkAlert id={props.course.id}/> : <div></div>}
                                 </Box>

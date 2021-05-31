@@ -126,7 +126,7 @@ export function CourseDetails(props){
                         {props.course.name}
                     </Typography>
                     <Grid container spacing={1} style={{marginTop: "1em"}}>
-                    { prepareCourseDetails(props.course) }
+                        { prepareCourseDetails(props.course) }
                     </Grid>
                 </CardContent>
             </Card>
