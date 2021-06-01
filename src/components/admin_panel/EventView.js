@@ -32,6 +32,7 @@ export function EventView({ eventName }) {
             return (
                 <Grid container item xs={12} spacing={3}>
                     <CourseComponent courseProp={course} />
+                    <hr />
                 </Grid>
             )
         })
@@ -45,10 +46,10 @@ export function EventView({ eventName }) {
                     <p>Date: {date}</p>
                     <Grid container
                         direction="row"
-                        justify="center"
-                        alignItems="center"
                     >
-                        {coursesComponents(groupedObjects[date])}
+                        <Grid item xs={12} sm={12}>
+                            {coursesComponents(groupedObjects[date])}
+                        </Grid>
                     </Grid>
                 </div>)
         })

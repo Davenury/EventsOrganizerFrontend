@@ -14,6 +14,7 @@ export function Button(props){
     }
 
     const button = <MB
+                    style={props.style}
                     variant={props.variant}
                     color={props.button_color}
                     onClick={props.onClick}>{props.text}</MB>
