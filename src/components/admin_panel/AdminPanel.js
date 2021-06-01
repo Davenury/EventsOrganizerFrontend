@@ -26,7 +26,7 @@ export function AdminPanel(props){
         api.updateInstructors(instructors)
 
     return(
-        <div style={{height: "80vh", width: "90%", marginLeft: "auto", marginRight: "auto"}}>
+        <div style={{height: "80vh", width: "100%", marginLeft: "auto", marginRight: "auto"}}>
             <h1>Admin Panel</h1>
             <Grid container>
             {getComponentForEachInstructor}

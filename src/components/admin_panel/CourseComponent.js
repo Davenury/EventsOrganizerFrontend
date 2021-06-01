@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { api } from '../../services/apis/EventsApi';
-import { TextField, Grid, Button } from '@material-ui/core';
+import { TextField, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import { Button } from '../../atoms/Button';
 
 const useStyles = makeStyles({
     root: {
@@ -72,7 +73,7 @@ export function CourseComponent({ courseProp }) {
                 <TextField label={"Classes form"} value={course.classesForm} onChange={onChangeByKey("classesForm")} />
                 <TextField label={"Class type "} value={course.classType} onChange={onChangeByKey("classesType")} />
                 <TextField label={"Classroom"} value={course.classroom} onChange={onChangeByKey("classroom")} />
-            <Button variant="contained" onClick={submitFunction}>Submit changes</Button>
+            <Button variant="contained" onClick={submitFunction} text="Submit changes" />
         </Grid>
 
     )

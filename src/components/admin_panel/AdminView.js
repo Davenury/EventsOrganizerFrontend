@@ -4,7 +4,7 @@ import {AdminPanel} from "./AdminPanel";
 import {api} from "../../services/apis/EventsApi"
 import swal from 'sweetalert';
 import { EventsList } from './EventsList';
-import { Button } from '@material-ui/core';
+import { Button } from '../../atoms/Button';
 
 export function AdminView(){
 
@@ -31,8 +31,8 @@ export function AdminView(){
 
         return (
             <div>
-            <Button variant="contained" onClick={onClick}>{getButtonText()}</Button>
-            {(isUserSection?<AdminPanel/>:<EventsList/>)}
+            <Button variant="contained" onClick={onClick} text={getButtonText()} />
+                {(isUserSection?<AdminPanel/>:<EventsList/>)}
             </div>
         )
     }
