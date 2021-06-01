@@ -12,7 +12,7 @@ export const InstructorTogglePresentation = (props) => {
             .then(response => response.map( elem => elem.json() ))
             .then(promises => Promise.all(promises))
             .then(events => setEvents(events[0]))
-    }, [])
+    }, [props.person])
 
     return(
         <div>

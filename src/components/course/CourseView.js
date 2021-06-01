@@ -10,7 +10,7 @@ export function CourseView(){
     useEffect(() => {
         api.getCourseById(id)
             .then(data => setCourse(data))
-    }, [])
+    }, [id])
 
     return(
         <div style={{width: "80%", marginLeft: "auto", marginRight: "auto", textAlign: "left"}}>

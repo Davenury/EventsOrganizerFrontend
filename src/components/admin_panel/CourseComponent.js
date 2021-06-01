@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { api } from '../../services/apis/EventsApi';
-import { TextField, Box, Grid, Button } from '@material-ui/core';
+import { TextField, Grid, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({

@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { CircularProgress, Box } from "@material-ui/core";
+import { Box } from "@material-ui/core";
 import { Calendar } from '../calendar/Calendar';
 import { mapCoursesToEvents } from '../../services/utils/coursesMapper';
 

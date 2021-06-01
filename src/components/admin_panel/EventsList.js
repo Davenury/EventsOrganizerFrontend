@@ -33,7 +33,7 @@ export function EventsList(props) {
 
     return (
         <div style={{ height: "80vh", width: "90%", marginLeft: "auto", marginRight: "auto" }}>
-            {index != -1 ? <EventView eventName={events[index]} />
+            {index !== -1 ? <EventView eventName={events[index]} />
                 : (<Box display="flex" flexDirection="column" justifyContent="center" width="40%" margin="auto">
                     <h1>Events list</h1>
                     {getComponentForEachInstructor}

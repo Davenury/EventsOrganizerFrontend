@@ -44,7 +44,7 @@ const switchElements = [
   createSwitchElement("/search", <InstructorBasicViewComponent />),
   createSwitchElement("/admin_panel", <AdminView />),
   createSwitchElement("/events", <EventList />),
-  createSwitchElement("*", <Page404 />)
+  createSwitchElement("*", <Page404 text="We couldn't find a page you're looking for!" />)
 ]
 
 const createLinkElement = (to, buttonText) => {

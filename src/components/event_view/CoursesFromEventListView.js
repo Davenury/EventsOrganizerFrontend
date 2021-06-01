@@ -10,7 +10,7 @@ export const CoursesFromEventListView = (props) => {
         api.getAllCoursesInEvents(props.event)
             .then(response => response.json())
             .then(data => setCourses(data))
-    }, [])
+    }, [props.event])
 
     return (
         <CoursesListView events={courses} />

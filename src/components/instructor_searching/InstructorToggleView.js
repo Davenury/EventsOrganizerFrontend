@@ -1,9 +1,10 @@
-import react, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { api } from "../../services/apis/EventsApi";
 import swal from 'sweetalert';
 import { InstructorTogglePresentation } from './InstructorTogglePresentation';
 import { Box, CircularProgress, Grid } from '@material-ui/core';
 import { Button } from '../../atoms/Button';
+import { Page404 } from '../utils/404';
 
 export const InstructorToggleView = (props) => {
     
@@ -88,7 +89,7 @@ export const InstructorToggleView = (props) => {
                             </div>
                             :
                             <div>
-                                We didn't succeed in getting your courses!
+                                <Page404 text="We couldn't find your courses!"/>
                             </div>
                         }            
                     </div>

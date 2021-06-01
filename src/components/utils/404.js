@@ -1,4 +1,3 @@
-import react from 'react';
 import { useHistory } from 'react-router-dom'
 import { Button } from '../../atoms/Button';
 import Grid from '@material-ui/core/Grid';
@@ -24,7 +23,7 @@ export const Page404 = (props) => {
                         </Box>
                         <Box p={1}>
                             <Typography variant="h5">
-                                We couldn't find a page you're looking for!
+                                {props.text}
                             </Typography>
                         </Box>
                         <Box p={1}>
@@ -33,7 +32,7 @@ export const Page404 = (props) => {
                     </Grid>
                 </Grid>
                 <Grid item xs={12} sm={4}>
-                    <img width="100%" src="https://imgur.com/5Wqj1AL.png" />
+                    <img width="100%" src="https://imgur.com/5Wqj1AL.png" alt="M" />
                 </Grid>
             </Grid>
         </div>

@@ -41,7 +41,7 @@ const propertiesToHumanRedableNames = {
         icon: <CalendarTodayIcon fontSize="small" />
     },
     "studentsGroup": {
-        title: "Students' Group",
+        title: "Students",
         icon: <GroupIcon fontSize="small" />
     },
     "classesType": {

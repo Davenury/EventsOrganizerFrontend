@@ -1,28 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { api } from '../../services/apis/EventsApi';
-import { TextField, Box, Grid, Button } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import { Grid } from '@material-ui/core';
 import { CourseComponent } from './CourseComponent';
-
-const useStyles = makeStyles({
-    root: {
-        padding: '10px'
-    },
-    children: {
-        '& *':
-        {
-            padding: '0 10px',
-        }
-    }
-});
 
 export function EventView({ eventName }) {
 
-    const classes = useStyles();
-
     const [courses, setCourses] = useState([])
-
-
 
     useEffect(() => {
         api.getAllCoursesInEvents(eventName)
@@ -36,7 +19,7 @@ export function EventView({ eventName }) {
                         }
                     }))
             })
-    }, [])
+    }, [eventName])
 
     const groupByDate = () =>
         courses.reduce((collection, elem) => {

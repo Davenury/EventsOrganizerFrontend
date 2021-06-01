@@ -1,6 +1,4 @@
 import {InstructorInputComponent} from "./InstructorInputComponent";
-
-import {InstructorCalendarView} from "./InstructorCallendarView";
 import {useState} from "react";
 import { InstructorToggleView } from "./InstructorToggleView";
 

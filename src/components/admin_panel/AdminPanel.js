@@ -16,13 +16,6 @@ export function AdminPanel(props){
             })
     }, [])
 
-    const onChangeValue = (idx) => 
-        (event) => {
-            const newArray = [...instructors]
-            newArray[idx].email = event.target.value
-            setInstructors(newArray)
-        }
-
     const getComponentForEachInstructor = instructors.map((instructor,idx) => {
         return (
             <Grid item xs={12} sm={6}><InstructorView instructorProp={instructor}/></Grid>
