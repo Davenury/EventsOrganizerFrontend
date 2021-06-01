@@ -15,6 +15,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import { Page404 } from './components/utils/404';
 import { EventList } from './components/event_view/EventList';
+import { ErrorBoundary } from './components/utils/ErrorBoundary';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -73,21 +74,23 @@ function App() {
 
     return (
       <div className="App">
-        <Router>
-            <AppBar position="static" className={classes.root}>
-                <Toolbar>
-                      {getLinksElements()}
-              </Toolbar>
-            </AppBar>
+        <ErrorBoundary>
+          <Router>
+              <AppBar position="static" className={classes.root}>
+                  <Toolbar>
+                        {getLinksElements()}
+                </Toolbar>
+              </AppBar>
 
-          <Switch>
-              <Route exact path="/">
-                <Redirect to="/search" />
-              </Route>
-              <Route path="/course/:id" children={<CourseView />} />
-              {getSwitchElements()}
-          </Switch>
-        </Router>
+            <Switch>
+                <Route exact path="/">
+                  <Redirect to="/search" />
+                </Route>
+                <Route path="/course/:id" children={<CourseView />} />
+                {getSwitchElements()}
+            </Switch>
+          </Router>
+        </ErrorBoundary>
       </div>
     );
 }
